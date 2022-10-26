@@ -10,7 +10,7 @@ declare -r turquoiseColour="\e[0;36m\033[1m"
 declare -r grayColour="\e[0;37m\033[1m"
 
 #Explanation
-N='Usage:  script [host] '
+N='Usage:  script [host]~forAllports || script [host] 1stPort LastPort '
 
 function ctrl_c(){
     echo -e "$redcolor\n\n[!] Saliendo...\n" 
@@ -23,7 +23,7 @@ trap ctrl_c INT
 function NumParameters(){ # funciona tal que NumParameters $# 'numeroquequieras
     if [[ $1 -gt $2 || $1 -lt $2 ]]; then
         echo -e "$N"
-        echo -e "$redcolor[!] Nº de parámetros incorrecto, el correcto es $purplecolor$2\n"   
+        echo -e "$redcolor[!] Nº de parámetros incorrecto, el correcto es $purplecolor otro\n"   
     tput cnorm;exit 1
     fi
 }
