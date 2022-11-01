@@ -1,3 +1,4 @@
 # Here I am saving interesting scripts that I have found in diff places
 * SimplePythonScript with upload helps me send photos from phone to computer, maybe I should look how it works to learn something...
 * DumpGoogleChrome dumps saved chrome-used passwords in windows computers, you need to hae python3 in the tarjet computer & pip3 install pycryptodomex, pip3 install pypiwin32; explanation can be found here https://www.geeksforgeeks.org/how-to-extract-chrome-passwords-in-python/
+* DumpingMozilaLinWin works for this search engine for both OS, I copied it but I changed 1 thing manually: if mozilla was installed using snap (in ubuntu), the profile folder changes, I comented that on the code but a 'wizary' or automatic change should be done to share. You can find your mozilla profile folder opening firefox, clin¡cking on the right = button -> help -> more problem resolution help.  
