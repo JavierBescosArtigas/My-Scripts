@@ -7,3 +7,6 @@
 * In frontend/ I am saving random files or notes about html or javascr. course I started
 * SamplesFolder contains example-files for procceses, such as .heic images
 
+# TODO
+* in heif, read + comparing method doesnt work, substitute it for getopts as in hackingscripts...
+

@@ -16,7 +16,7 @@ echo -e "[!]$blueColour si quiere descomprimir primero un .zip, escriba $purpleC
 read -t 10 action
 if [[ $action -eq 'zip' ]]; then
     echo -e "contenido del zip, asegúrese de que no tiene subcarpetas, se va a descomprimir, si tiene subcarpetas donde se encuentran los heif, primero desplácese a ellas y luego ejecute go\n"
-    7z l ./*zip | tail -n 5
+    7z l ./*.zip | tail -n 5
     echo -e "$redColour[!]Empezando descompresión, esto puede llevar un rato según el nº de archivos...\n"
     7z e ./*.zip >/dev/null
     echo -e "$endColour[~]$greenColour Ahora, si no hay subcarpetas escriba 'go' y se procederá a cambiar el formato de todos los .heic de la carpeta\n"
