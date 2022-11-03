@@ -11,8 +11,17 @@ declare -r purpleColour="\e[0;35m\033[1m"
 declare -r turquoiseColour="\e[0;36m\033[1m"
 declare -r grayColour="\e[0;37m\033[1m"
 
-echo -e "[~]$greenColour Funcionamiento: sitúate en una carpeta con .heic archivos y escriba 'go'; automáticamente transforma los archivos a jpeg y los guarda en una carpeta /n"
-read action -t 10
+echo -e "[~]$greenColour Funcionamiento: sitúate en una carpeta con .heic archivos y escriba 'go'; automáticamente transforma los archivos a jpeg y los guarda en una carpeta\n$endColour"
+echo -e "[!]$blueColour si quiere descomprimir primero un .zip, escriba $purpleColour'zip'$blueColour, el zip debe contener los archivos, no carpetas con los archivos\n$endColour"
+read -t 10 action
+if [[ $action -eq 'zip' ]]; then
+    echo -e "contenido del zip, asegúrese de que no tiene subcarpetas, se va a descomprimir, si tiene subcarpetas donde se encuentran los heif, primero desplácese a ellas y luego ejecute go\n"
+    7z l ./*zip | tail -n 5
+    echo -e "$redColour[!]Empezando descompresión, esto puede llevar un rato según el nº de archivos...\n"
+    7z e ./*.zip >/dev/null
+    echo -e "$endColour[~]$greenColour Ahora, si no hay subcarpetas escriba 'go' y se procederá a cambiar el formato de todos los .heic de la carpeta\n"
+    read -t 10 action
+fi
 if [[ $action -eq 'go' ]]; then
     rm -rf ./heifTojpeg >/dev/null
     mkdir heifTojpeg
@@ -34,9 +43,15 @@ if [[ $action -eq 'go' ]]; then
 else
     echo "[X] Saliendo..."
 fi
-echo -e "$blueColour RESULTADO!\n"
+echo -e "$blueColour RESULTADO!\n$endColour"
 ls ./heifTojpeg
 echo Comprimiendo en .zip...
 zip -r -9 jotapeges.zip heifTojpeg
 rm -rf heifTojpeg
-exit 0
+echo -e "[!]$redColour ¿Quiere borrar todos los .heic de la carpeta actual? Escriba $purpleColour 'Si'"
+read -t 300 action
+if [[ $action -eq 'Si' ]]; then
+    rm -rf ./*.heic
+fi
+echo "Adios!!!"; exit 0
+
